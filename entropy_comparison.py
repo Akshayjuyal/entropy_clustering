@@ -1,9 +1,10 @@
-# fh = logging.FileHandler('/tmp/'+multiprocessing.current_process().name+'_worker.log')
-# fmt = logging.Formatter(%(asctime)-6s: %(name)s - %(levelname)s - %(message)s)
-# fh.setFormatter(fmt)
-# local_logger = logging.getLogger(multiprocessing.current_process().name+'_worker')
-# local_logger.addHandler(fh)
-# local_logger.warning(multiprocessing.current_process().name + ' (worker) Process started')
+'''
+    File name: entropy_comparison.py
+    Author: Akshay Juyal
+    Date created: 05/17/2022
+    Date last modified: 7/22/2022
+    Python Version: 3.7.12 | packaged by conda-forge | (44db2626, Nov 15 2021, 12:53:46) [PyPy 7.3.7 with GCC 9.4.0]
+'''
 
 from collections import Counter, defaultdict
 import multiprocessing as mp
