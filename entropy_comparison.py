@@ -103,7 +103,6 @@ def intial_actg_per_column(seq_len,data,a_c_t_g_counts):
     return a_c_t_g_counts
             
 def calc_initial_hamming_dist_and_entropy_per_column(seq_len,size_per_cluster,a_c_t_g_counts):
-    # import pdb;pdb.set_trace()
     
     for column in range (seq_len):
         
@@ -348,10 +347,8 @@ def calculate_entropy_on_swap(process):
     snapshot_counter = 0
 
     start_time = time.process_time()
-    futuretime = datetime.now()+timedelta(hours=24, seconds=1)
-    # pbar = tqdm(total=1500)
-    while(datetime.now()<futuretime):
-    # while(iterations_without_change < threshold):
+    
+    while(iterations_without_change < threshold):
         
         temp_cluster_sequence = deepcopy(cluster_sequence_group)
         temp_calculations_hamming_entropy =  json.loads(json.dumps(hamming_entropy_dict_per_cluster))
@@ -394,18 +391,7 @@ def calculate_entropy_on_swap(process):
                                             }
         elapsed_time = timedelta(seconds =time.process_time() - start_time)
         
-        # pbar.update(iteration_count)
         logger.debug(f"total_moves_made = {iteration_count}, threshold = {threshold}, total_moves_since_last_swap = {iterations_without_change}, elapsed_time: {elapsed_time},entropy({old_en, new_en})")
-        # print(f"total moves made = {iteration_count} threshold = {threshold} total moves since last swap = {iterations_without_change}\nelapsed time: {elapsed_time}\nentropy({old_en, new_en})", end='\r')
-        # if iteration_count % snapshot_duration == 0:
-        #     print(f"total_moves_made = {iteration_count}, threshold = {threshold}, total_moves_since_last_swap = {iterations_without_change}, \nelapsed_time: {elapsed_time},entropy({old_en, new_en})")
-        #     final_funtion(iteration_info_dict,
-        #                     a_c_t_g_counts,orignal_a_c_t_g_counts,
-        #                     orignal_clusters, cluster_sequence_group,
-        #                     orignal_calculations_hamming_entropy, hamming_entropy_dict_per_cluster,
-        #                     snapshot_counter = snapshot_counter
-        #                     )
-        #     snapshot_counter+=1
         iteration_count+=1
     logger.debug("complete")
     print(f"{process} complete")
